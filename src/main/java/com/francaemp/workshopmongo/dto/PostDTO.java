@@ -1,17 +1,16 @@
-package com.francaemp.workshopmongo.entities;
+package com.francaemp.workshopmongo.dto;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import com.francaemp.workshopmongo.entities.Post;
+import com.francaemp.workshopmongo.entities.User;
 
-@Document
-public class Post implements Serializable{
+
+public class PostDTO implements Serializable{
 static final long serialVersionUID = 1L;
 
-	@Id
 	private String id;
 	private Date date;
 	private String title;
@@ -19,15 +18,15 @@ static final long serialVersionUID = 1L;
 	
 	private User author;
 	
-	public Post() {
+	public PostDTO() {
 	}
 
-	public Post(String id, Date date, String title, String body, User author) {
-		this.id = id;
-		this.date = date;
-		this.title = title;
-		this.body = body;
-		this.author = author;
+	public PostDTO(Post post) {
+		id = post.getId();
+		date = post.getDate();
+		title = post.getTitle();
+		body = post.getBody();
+		author = post.getAuthor();
 	}
 
 	public String getId() {
@@ -70,22 +69,4 @@ static final long serialVersionUID = 1L;
 	public void setAuthor(User author) {
 		this.author = author;
 	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Post other = (Post) obj;
-		return Objects.equals(id, other.id);
-	}
-	
 }
