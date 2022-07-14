@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
+import com.francaemp.workshopmongo.dto.AuthorDTO;
 import com.francaemp.workshopmongo.entities.Post;
 import com.francaemp.workshopmongo.entities.User;
 import com.francaemp.workshopmongo.repositories.PostRepository;
@@ -35,8 +36,8 @@ public class Instantiation implements CommandLineRunner{
 		
 		userRepository.saveAll(Arrays.asList(maria,alex,bob));
 		
-		Post p1 = new Post(null, new Date(), "viagem", "lugar maravilhoso", maria);
-		Post p2 = new Post(null, new Date(), "amor", "eu amo alguem", maria);
+		Post p1 = new Post(null, new Date(), "viagem", "lugar maravilhoso", new AuthorDTO(maria));
+		Post p2 = new Post(null, new Date(), "amor", "eu amo alguem", new AuthorDTO(maria));
 	
 		postRepository.saveAll(Arrays.asList(p1,p2));
 		

@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.francaemp.workshopmongo.dto.AuthorDTO;
 import com.francaemp.workshopmongo.dto.PostDTO;
 import com.francaemp.workshopmongo.entities.Post;
 import com.francaemp.workshopmongo.repositories.PostRepository;

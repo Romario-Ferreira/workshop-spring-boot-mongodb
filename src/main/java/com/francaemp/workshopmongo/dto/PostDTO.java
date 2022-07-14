@@ -16,7 +16,7 @@ static final long serialVersionUID = 1L;
 	private String title;
 	private String body;
 	
-	private User author;
+	private AuthorDTO author;
 	
 	public PostDTO() {
 	}
@@ -62,11 +62,11 @@ static final long serialVersionUID = 1L;
 	}
 
 	
-	public User getAuthor() {
+	public AuthorDTO getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(User author) {
+	public void setAuthor(AuthorDTO author) {
 		this.author = author;
 	}
 }
