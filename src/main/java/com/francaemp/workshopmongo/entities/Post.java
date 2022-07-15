@@ -1,13 +1,16 @@
 package com.francaemp.workshopmongo.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.francaemp.workshopmongo.dto.AuthorDTO;
+import com.francaemp.workshopmongo.dto.CommentDTO;
 
 @Document
 public class Post implements Serializable{
@@ -18,8 +21,9 @@ static final long serialVersionUID = 1L;
 	private Date date;
 	private String title;
 	private String body;
-	
 	private AuthorDTO author;
+	
+	private List<CommentDTO> comments = new ArrayList<>();
 	
 	public Post() {
 	}
@@ -71,6 +75,10 @@ static final long serialVersionUID = 1L;
 
 	public void setAuthor(AuthorDTO author) {
 		this.author = author;
+	}
+
+	public List<CommentDTO> getComments() {
+		return comments;
 	}
 
 	@Override

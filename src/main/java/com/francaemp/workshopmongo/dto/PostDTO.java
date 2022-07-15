@@ -2,10 +2,8 @@ package com.francaemp.workshopmongo.dto;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Objects;
 
 import com.francaemp.workshopmongo.entities.Post;
-import com.francaemp.workshopmongo.entities.User;
 
 
 public class PostDTO implements Serializable{
@@ -15,9 +13,8 @@ static final long serialVersionUID = 1L;
 	private Date date;
 	private String title;
 	private String body;
-	
 	private AuthorDTO author;
-	
+
 	public PostDTO() {
 	}
 
@@ -69,4 +66,5 @@ static final long serialVersionUID = 1L;
 	public void setAuthor(AuthorDTO author) {
 		this.author = author;
 	}
+	
 }
