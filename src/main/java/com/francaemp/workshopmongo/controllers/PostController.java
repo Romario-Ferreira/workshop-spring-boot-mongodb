@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.francaemp.workshopmongo.controllers.util.URL;
 import com.francaemp.workshopmongo.dto.PostDTO;
 import com.francaemp.workshopmongo.entities.Post;
 import com.francaemp.workshopmongo.services.PostService;
@@ -65,5 +67,12 @@ public class PostController {
 		service.update(u);
 		return ResponseEntity.noContent().build();	
 	}
+	
+	@GetMapping(value = "/titlesearch")
+	public ResponseEntity<List<Post>> findByHeader(@RequestParam(value = "text",defaultValue = "") String title){
+		title = URL.decodingTitle(title);
+		return ResponseEntity.ok().body(service.findByTitle(title));
+	}
+	
 	
 }

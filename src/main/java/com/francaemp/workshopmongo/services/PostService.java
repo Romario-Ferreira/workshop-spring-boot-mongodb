@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.francaemp.workshopmongo.dto.AuthorDTO;
 import com.francaemp.workshopmongo.dto.PostDTO;
 import com.francaemp.workshopmongo.entities.Post;
 import com.francaemp.workshopmongo.repositories.PostRepository;
@@ -42,5 +41,9 @@ public class PostService {
 
 	public Post fromDTO(PostDTO objDTO) {
 		return new Post(objDTO.getId(),objDTO.getDate(),objDTO.getTitle(), objDTO.getBody(),objDTO.getAuthor());
+	}
+	
+	public List<Post> findByTitle(String text) {
+		return repository.findByTitleContainingIgnoreCase(text);
 	}
 }
