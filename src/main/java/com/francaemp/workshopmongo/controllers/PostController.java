@@ -1,6 +1,7 @@
 package com.francaemp.workshopmongo.controllers;
 
 import java.net.URI;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -74,5 +75,14 @@ public class PostController {
 		return ResponseEntity.ok().body(service.findByTitle(title));
 	}
 	
-	
+	@GetMapping(value = "/fullsearch")
+	public ResponseEntity<List<Post>> fullSearch(
+			@RequestParam(value = "text",defaultValue = "") String title,
+			@RequestParam(value = "minDate",defaultValue = "") String minDate,
+			@RequestParam(value = "maxDate",defaultValue = "") String maxDate){
+		title = URL.decodingTitle(title);
+		Date min = URL.decodeDate(minDate, new Date(0L));
+		Date max = URL.decodeDate(maxDate, new Date());	
+		return ResponseEntity.ok().body(service.fullSearch(title, min, max));
+	}
 }

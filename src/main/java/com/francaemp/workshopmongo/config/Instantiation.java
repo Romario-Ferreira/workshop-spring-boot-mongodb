@@ -1,5 +1,6 @@
 package com.francaemp.workshopmongo.config;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -27,6 +28,7 @@ public class Instantiation implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 		userRepository.deleteAll();
 		postRepository.deleteAll();
@@ -37,8 +39,8 @@ public class Instantiation implements CommandLineRunner{
 		
 		userRepository.saveAll(Arrays.asList(maria,alex,bob));
 		
-		Post p1 = new Post(null, new Date(), "Bom dia", "lugar maravilhoso", new AuthorDTO(maria));
-		Post p2 = new Post(null, new Date(), "amor", "eu amo alguem", new AuthorDTO(maria));
+		Post p1 = new Post(null, sdf.parse("21/03/2018"), "Bom dia", "lugar maravilhoso", new AuthorDTO(maria));
+		Post p2 = new Post(null, sdf.parse("23/03/2018"), "amor", "eu amo alguem", new AuthorDTO(maria));
 	
 		p1.getComments().add(new CommentDTO("Boa viagem", new Date(), new AuthorDTO(bob)));
 		p1.getComments().add(new CommentDTO("Aproveite", new Date(), new AuthorDTO(alex)));
